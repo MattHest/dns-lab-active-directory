@@ -9,6 +9,33 @@ In this lab, I configured and tested DNS functionality within an Active Director
 
 ---
 
+## Lab Walkthrough
+
+### A Record Creation & Testing
+I started by attempting to ping a hostname ("mainframe") from the client machine before it existed in DNS. The request failed, confirming no DNS record was present.
+
+I then created an A record on the Domain Controller mapping "mainframe" to the server’s private IP address.
+
+After creating the record, I returned to the client machine and successfully pinged "mainframe", confirming proper DNS resolution.
+
+---
+
+### DNS Cache Behavior
+Next, I modified the A record for "mainframe" to point to a different IP address (8.8.8.8).
+
+When I tested from the client again, it still resolved to the old IP address due to DNS caching.
+
+I used `ipconfig /flushdns` to clear the cache, then tested again and confirmed the updated IP was now being used.
+
+---
+
+### CNAME Record Testing
+I created a CNAME record named "search" that pointed to an external domain (google.com).
+
+From the client machine, I tested name resolution and confirmed that "search" correctly redirected to the target domain, demonstrating how CNAME records function as aliases.
+
+---
+
 ## Screenshots & Walkthrough
 
 ### Azure Virtual Machines
@@ -36,6 +63,7 @@ The client machine still resolves the old IP address due to cached DNS records, 
 ![DNS Cache After](images/dns-cache-after-flush.png)
 
 After flushing the DNS cache, the client retrieves the updated DNS record, confirming successful propagation and resolution.
+
 ---
 
 ## What This Lab Demonstrates
