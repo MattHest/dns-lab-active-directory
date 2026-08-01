@@ -85,5 +85,4 @@ After flushing the DNS cache, the client retrieves the updated DNS record, confi
 ## Author
 
 Matthew Hestand  
-Aspiring IT Support Specialist  
-CompTIA A+ (Core 1 Passed)
+
